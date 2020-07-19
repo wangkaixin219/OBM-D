@@ -15,36 +15,27 @@ res_t mmdh_res;
 config_t* parse_config(int argc, const char **argv) {
 
     config_t * config = (config_t *) malloc(sizeof(config_t));
-    config->dataset_type = atoi(argv[1]);
 
-    if (config->dataset_type == 0) {
-        if (argc != 5) {
-            fprintf(stderr, "Usage error.\n");
-            exit(0);
-        }
-        config->cardinality = atoi(argv[2]);
-        config->t_max = atoi(argv[3]);
-        config->setting_type = atoi(argv[4]);
-        if (config->setting_type != 0 && config->setting_type != 1 && config->setting_type != 2) {
-            fprintf(stderr, "Usage error.\n");
-            fprintf(stderr, "Wrong distribution type.\n");
-            exit(0);
-        }
-    }
-
-    else if (config->dataset_type == 1) {
-        if (argc != 3) {
-            fprintf(stderr, "Usage error.\n");
-            exit(0);
-        }
-        config->dir_name = argv[2];
-    }
-
-    else {
+#if !defined(DIDI) && !defined(OLIST)
+    if (argc != 5) {
         fprintf(stderr, "Usage error.\n");
-        fprintf(stderr, "Wrong Dataset type.\n");
         exit(0);
     }
+    config->cardinality = atoi(argv[1]);
+    config->t_max = atoi(argv[2]);
+    config->setting_type = atoi(argv[3]);
+    if (config->setting_type != 0 && config->setting_type != 1 && config->setting_type != 2) {
+        fprintf(stderr, "Usage error.\n");
+        fprintf(stderr, "Wrong distribution type.\n");
+        exit(0);
+    }
+#else
+    if (argc != 2) {
+        fprintf(stderr, "Usage error.\n");
+        exit(0);
+    }
+    config->dir_name = argv[1];
+#endif
 
     return config;
 }
