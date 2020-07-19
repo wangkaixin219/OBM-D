@@ -1,10 +1,10 @@
 #include <iostream>
 #include "data.h"
-#include "q_learning.h"
+#include "rql-adapt.h"
 #include "opt.h"
- #include "restricted_q_learning.h"
-#include "cclo.h"
-#include "mmdh.h"
+ #include "adaptive-h.h"
+#include "fixed-h.h"
+#include "variable-h.h"
 
 res_t q_res;
 res_t restricted_q_res;
@@ -17,7 +17,7 @@ config_t* parse_config(int argc, const char **argv) {
     config_t * config = (config_t *) malloc(sizeof(config_t));
 
 #if !defined(DIDI) && !defined(OLIST)
-    if (argc != 5) {
+    if (argc != 4) {
         fprintf(stderr, "Usage error.\n");
         exit(0);
     }

@@ -1,5 +1,5 @@
 
-#include "q_learning.h"
+#include "adaptive-h.h"
 #include "opt.h"
 
 using namespace std;

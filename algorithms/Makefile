@@ -1,28 +1,28 @@
-OBJ = main.o data.o cclo.o opt.o q_learning.o mmdh.o hst.o restricted_q_learning.o
+OBJ = main.o data.o fixed-h.o opt.o adaptive-h.o variable-h.o hst.o rql-adapt.o
 
 all: $(OBJ)
 	g++ -g -O3 -Wall -o OBM-D $(OBJ)
 
-main.o: main.cpp data.h q_learning.h opt.h cclo.h mmdh.h restricted_q_learning.h
+main.o: main.cpp data.h adaptive-h.h opt.h fixed-h.h variable-h.h rql-adapt.h
 	g++ -g -c main.cpp
 
 data.o: data.cpp data.h def.h
 	g++ -g -c data.cpp
 
-cclo.o: cclo.cpp cclo.h def.h
-	g++ -g -c cclo.cpp
+fixed-h.o: fixed-h.cpp fixed-h.h def.h
+	g++ -g -c fixed-h.cpp
 
 opt.o: opt.cpp opt.h def.h
 	g++ -g -c opt.cpp
 
-q_learning.o: q_learning.cpp q_learning.h def.h
-	g++ -g -c q_learning.cpp
+adaptive-h.o: adaptive-h.cpp adaptive-h.h def.h
+	g++ -g -c adaptive-h.cpp
 
-restricted_q_learning.o: restricted_q_learning.cpp opt.h def.h
-	g++ -g -c restricted_q_learning.cpp
+rql-adapt.o: rql-adapt.cpp rql-adapt.h opt.h def.h
+	g++ -g -c rql-adapt.cpp
 
-mmdh.o: mmdh.cpp mmdh.h hst.h def.h
-	g++ -g -c mmdh.cpp
+variable-h.o: variable-h.cpp variable-h.h hst.h def.h
+	g++ -g -c variable-h.cpp
 
 hst.o: hst.cpp hst.h
 	g++ -g -c hst.cpp

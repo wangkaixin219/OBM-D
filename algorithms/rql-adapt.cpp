@@ -2,7 +2,7 @@
 // Created by Kaixin Wang on 10/4/2019.
 //
 
-#include "restricted_q_learning.h"
+#include "rql-adapt.h"
 #include "opt.h"
 
 using namespace std;
