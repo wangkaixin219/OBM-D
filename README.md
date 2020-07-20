@@ -20,6 +20,14 @@ The hyperparameters for different algorithm has been provided in corresponding h
 
 - Compile the codes
 
+First modify the forth line of Makefile
+
+```Makefile
+CFLAGS = -Wall -O3 -g
+```
+
+And then run the following command lines
+
 ```bash
 cd algorithms/
 make clean
@@ -49,10 +57,18 @@ Varying distribution settings: ./OBM-D 1000 2000 2
 
 - Compile the codes
 
+First modify the forth line of Makefile
+
+```Makefile
+CFLAGS = -Wall -O3 -g -DDIDI
+```
+
+And then run the following command lines
+
 ```bash
 cd algorithms/
 make clean
-make didi
+make
 ```
 
 - Run the algorithms
@@ -68,10 +84,18 @@ Run Didi dataset: ./OBM-D /PATH_TO_OBM-D/datasets/didi
 
 - Compile the codes
 
+First modify the forth line of Makefile
+
+```Makefile
+CFLAGS = -Wall -O3 -g -DOLIST
+```
+
+And then run the following command lines
+
 ```bash
 cd algorithms/
 make clean
-make olist
+make
 ```
 
 - Run the algorithms
