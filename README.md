@@ -85,8 +85,8 @@ Run Olist dataset: ./OBM-D /PATH_TO_OBM-D/datasets/olist
 ### Collect the running statistics
 
 The code will return several lines, each line follows the following format
+
 ```
 algorithm name: max cost, running time
-
 ```
 
