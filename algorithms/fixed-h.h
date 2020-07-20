@@ -4,14 +4,15 @@
 
 #include "def.h"
 
+#if !defined(DIDI) && !defined(OLIST)
 #define CCLO_THRESHOLD  100
 
-#ifdef DIDI
+#elif defined(DIDI)
 #define CCLO_THRESHOLD  1000
-#endif
 
-#ifdef OLIST
+#elif defined(OLIST)
 #define CCLO_THRESHOLD  500
+
 #endif
 
 void cclo(data_t *gen_data);

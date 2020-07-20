@@ -12,7 +12,7 @@
 #define RQL     2
 #define CCLO    3
 
-#ifdef OLIST
+#if defined(DIDI) || defined(OLIST)
 #define rad(x)  (x) * 3.1415926 / 180
 #define R       6378.137
 #endif

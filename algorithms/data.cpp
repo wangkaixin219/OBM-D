@@ -1,6 +1,8 @@
 
 #include "data.h"
 #include <random>
+#include <cassert>
+#include <algorithm>
 #include <iostream>
 #include <vector>
 

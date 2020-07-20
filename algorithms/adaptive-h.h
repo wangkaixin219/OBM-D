@@ -4,21 +4,21 @@
 
 #include "def.h"
 
+#if !defined(DIDI) && !defined(OLIST)
 #define MAP_SIZE 1000
 #define BIN_SIZE 30
 #define STEP_SIZE 5
 #define QL_UPPER_BOUND 300
 
 
-#ifdef DIDI
+#elif defined(DIDI)
 #define MAP_SIZE 5000
 #define BIN_SIZE 100
 #define STEP_SIZE 30
 #define QL_UPPER_BOUND 30 * 600
-#endif
 
 
-#ifdef OLIST
+#elif defined(OLIST)
 #define MAP_SIZE 5000
 #define BIN_SIZE 100
 #define STEP_SIZE 1000

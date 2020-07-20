@@ -3,21 +3,21 @@
 
 #include "def.h"
 
+#if !defined(DIDI) && !defined(OLIST)
 #define RQL_UPPER_BOUND     50
 #define RQL_LOWER_BOUND     1
 #define RQL_REQ_MAXSIZE     1000
 #define RQL_WORK_MAXSIZE    1000
 
 
-#ifdef DIDI
+#elif defined(DIDI)
 #define RQL_UPPER_BOUND     100
 #define RQL_LOWER_BOUND     1
 #define RQL_REQ_MAXSIZE     200
 #define RQL_WORK_MAXSIZE    200
-#endif
 
 
-#ifdef OLIST
+#elif defined(OLIST)
 #define RQL_UPPER_BOUND     100
 #define RQL_LOWER_BOUND     1
 #define RQL_REQ_MAXSIZE     1000

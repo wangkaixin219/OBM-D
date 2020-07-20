@@ -83,19 +83,17 @@ int main(int argc, const char **argv) {
     data_t *test_data;
     init_q_values();
     init_restricted_q_values();
-    
-    if (configs->dataset_type == 0) {
-        train_q_values_syn(configs);
-        train_restricted_q_values_syn(configs);
-        test_data = generate_data(configs);
-    }
-    else {
-        string train_file = configs->dir_name + "/train.txt";
-        string test_file = configs->dir_name + "/test.txt";
-        train_q_values_real(train_file.c_str());
-        train_restricted_q_values_real(train_file.c_str());
-        test_data = read_data_from_file(test_file.c_str());
-    }
+#if !defined(DIDI) && !defined(OLIST)    
+    train_q_values_syn(configs);
+    train_restricted_q_values_syn(configs);
+    test_data = generate_data(configs);
+#else
+    string train_file = configs->dir_name + "/train.txt";
+    string test_file = configs->dir_name + "/test.txt";
+    train_q_values_real(train_file.c_str());
+    train_restricted_q_values_real(train_file.c_str());
+    test_data = read_data_from_file(test_file.c_str());
+#endif
 
     q_learning(test_data);
     printf("q_learning: %lf, %lf ms\n", q_res.bott_v, (double) q_res.running_time);
