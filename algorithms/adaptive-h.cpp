@@ -43,7 +43,7 @@ void cal_states(context_t *context, long *lc_state, long *tr_state, long time_st
     }
 }
 
-void init_q_values(config_t *config) {
+void init_q_values() {
 
     int max_tr = (2 * MAP_SIZE) / BIN_SIZE + 1;
     q_values = new double** [max_tr + 1];
@@ -56,8 +56,6 @@ void init_q_values(config_t *config) {
             }
         }
     }
-    q_res.memory_r += (double) sizeof(double) * max_tr * QL_LENGTH * QL_LENGTH;
-    q_res.memory_m = q_res.memory_m > q_res.memory_r ? q_res.memory_m : q_res.memory_r;
 }
 
 void release_q_values() {
@@ -69,7 +67,6 @@ void release_q_values() {
         delete [] q_values[i];
     }
     delete [] q_values;
-    q_res.memory_r -= (double) sizeof(double) * max_tr * QL_LENGTH * QL_LENGTH;
 }
 
 double train_q_values(data_t *gen_data, int episode, double offline) {
@@ -261,8 +258,4 @@ void q_learning(data_t *gen_data) {
     delete context;
     q_res.bott_v = c_t;
     q_res.running_time = usertime + systime;
-    q_res.memory_r += sizeof(context) + 5 * sizeof(int) + 4 * sizeof(double) + 4 * sizeof(node_t);
-    q_res.memory_m = q_res.memory_m > q_res.memory_r ? q_res.memory_m : q_res.memory_r;
-    q_res.memory_r -= sizeof(context) + 5 * sizeof(int) + 4 * sizeof(double) + 4 * sizeof(node_t);
-
 }

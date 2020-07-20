@@ -30,7 +30,7 @@
 #define QL_INIT             1e-4
 
 
-void init_q_values(config_t *config);
+void init_q_values();
 void release_q_values();
 double train_q_values(data_t *gen_data, int episode, double offline);
 void q_learning(data_t *gen_data);

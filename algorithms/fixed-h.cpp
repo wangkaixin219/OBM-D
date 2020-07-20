@@ -94,8 +94,4 @@ void cclo(data_t *gen_data) {
     delete context;
     cclo_res.bott_v = c_t;
     cclo_res.running_time = usertime + systime;
-    cclo_res.memory_r += sizeof(int) + 3 * sizeof(double) + sizeof(context) + 4 * sizeof(node_t);
-    cclo_res.memory_m = cclo_res.memory_m > cclo_res.memory_r ?
-                                                    cclo_res.memory_m : cclo_res.memory_r;
-    cclo_res.memory_r -= sizeof(int) + 3 * sizeof(double) + sizeof(context) + 4 * sizeof(node_t);
 }

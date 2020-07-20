@@ -112,7 +112,6 @@ void mmdh(data_t* gen_data) {
     
     delete context;
     mmdh_res.running_time = usertime + systime;
-    mmdh_res.memory_m = mmdh_res.memory_r = 0;
 }
 
 

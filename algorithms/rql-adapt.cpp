@@ -21,8 +21,6 @@ void init_restricted_q_values() {
             }
         }
     }
-    restricted_q_res.memory_r += sizeof(double) * ((double) RQL_REQ_MAXSIZE) * ((double) RQL_WORK_MAXSIZE) * RQL_LENGTH * RQL_LENGTH;
-    restricted_q_res.memory_m = restricted_q_res.memory_m > restricted_q_res.memory_r ? restricted_q_res.memory_m : restricted_q_res.memory_r;
 }
 
 void train_restricted_q_values(data_t *gen_data, int episode) {
@@ -221,7 +219,4 @@ void restricted_q_learning(data_t *gen_data) {
     delete context;
     restricted_q_res.bott_v = c_t;
     restricted_q_res.running_time = usertime + systime;
-    restricted_q_res.memory_r += sizeof(context) + 6 * sizeof(int) + 3 * sizeof(double) + 4 * sizeof(node_t);
-    restricted_q_res.memory_m = restricted_q_res.memory_m > restricted_q_res.memory_r ? restricted_q_res.memory_m : restricted_q_res.memory_r;
-    restricted_q_res.memory_r -= sizeof(context) + 6 * sizeof(int) + 3 * sizeof(double) + 4 * sizeof(node_t);
 }

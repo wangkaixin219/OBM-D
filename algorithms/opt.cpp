@@ -37,23 +37,6 @@ bool init_matching_sort(context_t *context, long time_step, int algorithm, bool 
     context->ext.mmd = mmd;
     context->ext.r = ext_req;
     context->ext.w = ext_work;
-    if (algorithm == OPT) {
-        opt_res.memory_r += 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-        opt_res.memory_m = opt_res.memory_m > opt_res.memory_r ? opt_res.memory_m : opt_res.memory_r;
-        opt_res.memory_r -= 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-    } else if (algorithm == QL && !training) {
-        q_res.memory_r += 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-        q_res.memory_m = q_res.memory_m > q_res.memory_r ? q_res.memory_m : q_res.memory_r;
-        q_res.memory_r -= 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-    }/* else if (algorithm == RQL && !training) {
-        restricted_q_res.memory_r += 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-        restricted_q_res.memory_m = restricted_q_res.memory_m > restricted_q_res.memory_r ? restricted_q_res.memory_m : restricted_q_res.memory_r;
-        restricted_q_res.memory_r -= 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-    }*/ else if ( /*algorithm == TCLO ||*/ algorithm == CCLO) {
-        cclo_res.memory_r += 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-        cclo_res.memory_m = cclo_res.memory_m > cclo_res.memory_r ? cclo_res.memory_m : cclo_res.memory_r;
-        cclo_res.memory_r -= 5 * sizeof(node_t) + 3 * sizeof(double) + sizeof(int);
-    } else {}
     return true;
 }
 
@@ -77,24 +60,6 @@ bool init_matching(context_t *context, int time_step, int algorithm, bool traini
     context->ext.mmd = mmd;
     context->ext.r = ext_req;
     context->ext.w = ext_work;
-    if (algorithm == OPT) {
-        opt_res.memory_r += 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-        opt_res.memory_m = opt_res.memory_m > opt_res.memory_r ? opt_res.memory_m : opt_res.memory_r;
-        opt_res.memory_r -= 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-    } else if (algorithm == QL && !training) {
-        q_res.memory_r += 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-        q_res.memory_m = q_res.memory_m > q_res.memory_r ? q_res.memory_m : q_res.memory_r;
-        q_res.memory_r -= 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-    } /* else if (algorithm == RQL && !training) {
-        restricted_q_res.memory_r += 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-        restricted_q_res.memory_m = restricted_q_res.memory_m > restricted_q_res.memory_r ? restricted_q_res.memory_m : restricted_q_res.memory_r;
-        restricted_q_res.memory_r -= 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-    } */ else if (/*algorithm == TCLO ||*/ algorithm == CCLO) {
-        cclo_res.memory_r += 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-        cclo_res.memory_m = cclo_res.memory_m > cclo_res.memory_r ?
-                                                        cclo_res.memory_m : cclo_res.memory_r;
-        cclo_res.memory_r -= 4 * sizeof(node_t) + 2 * sizeof(double) + sizeof(int);
-    } else {}
     return true;
 }
 
@@ -138,24 +103,6 @@ void reform_matching(context_t *context, queue_node_t **queue, int rear, int tim
     context->ext.mmd = mmd;
     context->ext.r = ext_req;
     context->ext.w = ext_work;
-    if (algorithm == OPT) {
-        opt_res.memory_r += 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-        opt_res.memory_m = opt_res.memory_m > opt_res.memory_r ? opt_res.memory_m : opt_res.memory_r;
-        opt_res.memory_r -= 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-    } else if (algorithm == QL && !training) {
-        q_res.memory_r += 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-        q_res.memory_m = q_res.memory_m > q_res.memory_r ? q_res.memory_m : q_res.memory_r;
-        q_res.memory_r -= 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-    } /*else if (algorithm == RQL && !training) {
-        restricted_q_res.memory_r += 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-        restricted_q_res.memory_m = restricted_q_res.memory_m > restricted_q_res.memory_r ? restricted_q_res.memory_m : restricted_q_res.memory_r;
-        restricted_q_res.memory_r -= 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-    } */ else if (/*algorithm == TCLO ||*/ algorithm == CCLO) {
-        cclo_res.memory_r += 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-        cclo_res.memory_m = cclo_res.memory_m > cclo_res.memory_r ?
-                                                        cclo_res.memory_m : cclo_res.memory_r;
-        cclo_res.memory_r -= 6 * sizeof(node_t) + 2 * sizeof(int) + 2 * sizeof(double);
-    } else {}
 }
 
 bool find_swap_chain(context_t *context, long time_step, int algorithm, bool training) {
@@ -207,24 +154,6 @@ bool find_swap_chain(context_t *context, long time_step, int algorithm, bool tra
         cur++;
     }
 SUCCESS:
-    if (algorithm == OPT) {
-        opt_res.memory_r += 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-        opt_res.memory_m = opt_res.memory_m > opt_res.memory_r ? opt_res.memory_m : opt_res.memory_r;
-        opt_res.memory_r -= 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-    } else if (algorithm == QL && !training) {
-        q_res.memory_r += 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-        q_res.memory_m = q_res.memory_m > q_res.memory_r ? q_res.memory_m : q_res.memory_r;
-        q_res.memory_r -= 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-    } /*else if (algorithm == RQL && !training) {
-        restricted_q_res.memory_r += 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-        restricted_q_res.memory_m = restricted_q_res.memory_m > restricted_q_res.memory_r ? restricted_q_res.memory_m : restricted_q_res.memory_r;
-        restricted_q_res.memory_r -= 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-    } */else if (/*algorithm == TCLO ||*/ algorithm == CCLO) {
-        cclo_res.memory_r += 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-        cclo_res.memory_m = cclo_res.memory_m > cclo_res.memory_r ?
-                                                        cclo_res.memory_m : cclo_res.memory_r;
-        cclo_res.memory_r -= 3 * sizeof(node_t) + 2 * sizeof(int) + sizeof(bool) + (3 + context->req_num + context->work_num) * sizeof(queue_node_t);
-    } else {}
     if (succeed) reform_matching(context, queue, rear, time_step, algorithm, training);
     else {
         context->ext.r->matched_with = context->ext.w;
@@ -269,7 +198,4 @@ void opt(data_t *gen_data) {
     delete context;
     opt_res.bott_v = c_t;
     opt_res.running_time = usertime + systime;
-    opt_res.memory_r += sizeof(double) + sizeof(context);
-    opt_res.memory_m = opt_res.memory_m > opt_res.memory_r ? opt_res.memory_m : opt_res.memory_r;
-    opt_res.memory_r -= sizeof(double) + sizeof(context);
 }

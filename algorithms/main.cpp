@@ -81,7 +81,7 @@ int main(int argc, const char **argv) {
 
     config_t *configs = parse_config(argc, argv);
     data_t *test_data;
-    init_q_values(configs);
+    init_q_values();
     init_restricted_q_values();
     
     if (configs->dataset_type == 0) {
@@ -98,23 +98,23 @@ int main(int argc, const char **argv) {
     }
 
     q_learning(test_data);
-    printf("q_learning: %lf, %lf ms, %lf MB\n", q_res.bott_v, (double) q_res.running_time, (double) q_res.memory_m / (1 << 20));
+    printf("q_learning: %lf, %lf ms\n", q_res.bott_v, (double) q_res.running_time);
     reset_data(test_data);
 
     restricted_q_learning(test_data);
-    printf("restricted q_learning: %lf, %lf ms, %lf MB\n", restricted_q_res.bott_v, (double) restricted_q_res.running_time, (double) restricted_q_res.memory_m / (1 << 20));
+    printf("restricted q_learning: %lf, %lf ms\n", restricted_q_res.bott_v, (double) restricted_q_res.running_time);
     reset_data(test_data);
 
     cclo(test_data);
-    printf("cclo: %lf, %lf ms, %lf MB\n", cclo_res.bott_v, (double) cclo_res.running_time, (double) cclo_res.memory_m / (1 << 20));
+    printf("cclo: %lf, %lf ms\n", cclo_res.bott_v, (double) cclo_res.running_time);
     reset_data(test_data);
 
     mmdh(test_data);
-    printf("mmdh: %lf, %lf ms, %lf MB\n", mmdh_res.bott_v, (double) mmdh_res.running_time, (double) mmdh_res.memory_m / (1 << 20));
+    printf("mmdh: %lf, %lf ms\n", mmdh_res.bott_v, (double) mmdh_res.running_time);
     reset_data(test_data);
 
     opt(test_data);
-    printf("opt: %lf, %lf ms, %lf MB\n", opt_res.bott_v, (double) (opt_res.running_time), (double) opt_res.memory_m / (1 << 20));
+    printf("opt: %lf, %lf ms\n", opt_res.bott_v, (double) (opt_res.running_time));
     reset_data(test_data);
 
     free_data_mem(test_data);

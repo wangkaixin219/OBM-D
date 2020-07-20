@@ -57,7 +57,7 @@ typedef struct context {
 } context_t;
 
 typedef struct result {
-    double bott_v, running_time, memory_r, memory_m;
+    double bott_v, running_time;
 } res_t;
 
 inline double dist(node_t* req_node, node_t* work_node) {
