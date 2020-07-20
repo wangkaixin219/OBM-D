@@ -1,7 +1,3 @@
-//
-// Created by Kaixin Wang on 10/4/2019.
-//
-
 #ifndef DELAY_MATCHING_V2_RESTRICTED_Q_LEARNING_H
 #define DELAY_MATCHING_V2_RESTRICTED_Q_LEARNING_H
 

@@ -1,7 +1,3 @@
-//
-// Created by Kaixin Wang on 10/4/2019.
-//
-
 #include "rql-adapt.h"
 #include "opt.h"
 
