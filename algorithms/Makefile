@@ -1,7 +1,7 @@
 OBJ = main.o data.o fixed-h.o opt.o adaptive-h.o variable-h.o hst.o rql-adapt.o
 CC = gcc-10
 CXX = g++-10
-CFLAGS = -Wall -O3 -g -DDIDI
+CFLAGS = -Wall -O3 -g 
 
 
 all: $(OBJ)
